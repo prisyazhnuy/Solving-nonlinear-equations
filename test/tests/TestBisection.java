@@ -39,6 +39,7 @@ public class TestBisection {
         int tmp = (int) (iter.get(iter.size()-1).getX()*1000);
         assertTrue(tmp/1000.0==-8.140);
         //assertTrue(iter.get(0).getX()==-8.5);
+        
     }
     
     @Test
@@ -47,7 +48,7 @@ public class TestBisection {
         func.setStartPoint(-1.0, 0.0);
         ArrayList<Iteration> iter = func.bisection();
         int tmp = (int) (iter.get(iter.size()-1).getX()*1000.0);
-        System.out.println(""+tmp);
+        System.out.println(""+iter.get(iter.size()-1).getX());
         assertTrue(tmp/1000.0==-0.860);
         //assertTrue(iter.get(0).getX()==-8.5);
     }
