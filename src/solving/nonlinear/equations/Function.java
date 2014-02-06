@@ -19,7 +19,7 @@ public class Function {
         this.d=d;
     }
     
-    private double f(double x){
+    public double f(double x){
         return a*Math.pow(x, 3)+b*Math.pow(x, 2)+c*x+d;
     }
     
@@ -43,5 +43,8 @@ public class Function {
         }
     }
     
-    
+    public void setStartPoint(double a0, double b0){
+        this.a0=a0;
+        this.b0=b0;
+    }
 }
