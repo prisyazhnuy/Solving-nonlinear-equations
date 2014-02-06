@@ -27,11 +27,12 @@ public class Function {
         ArrayList<Iteration> result = new ArrayList<>();
         double a = a0;
         double b = b0;
-        if(f(a)*f(b)<0.0){
+        if(f(a)*f(b)<=0.0){
             while(Math.abs(a-b)/2.0>=E){
                 double x = (a+b)/2.0;
                 result.add(new Iteration(a, b, x));
                 if(f(x)>0){
+                //if(f(b)<f(a)){
                     b=x;
                 }else{
                     a=x;

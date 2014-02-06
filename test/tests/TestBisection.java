@@ -55,7 +55,7 @@ public class TestBisection {
     @Test
     public void X3(){
         Function func = new Function(1.0, 8.0, -2.0, -7.0);
-        func.setStartPoint(0.0, 1.0);
+        func.setStartPoint(0.0, 1.2);
         ArrayList<Iteration> iter = func.bisection();
         int tmp = (int) (iter.get(iter.size()-1).getX()*1000);
         assertTrue(tmp/1000.0==1.000);
