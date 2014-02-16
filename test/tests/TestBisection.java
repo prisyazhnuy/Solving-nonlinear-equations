@@ -48,8 +48,8 @@ public class TestBisection {
         func.setStartPoint(-1.0, 0.0);
         ArrayList<Iteration> iter = func.bisection();
         int tmp = (int) (iter.get(iter.size()-1).getX()*1000.0);
-        System.out.println(""+iter.get(iter.size()-1).getX());
-        assertTrue(tmp/1000.0==-0.860);
+        System.out.println(""+tmp);
+        assertTrue(tmp/1000.0==-0.859);
         //assertTrue(iter.get(0).getX()==-8.5);
     }
     
@@ -60,6 +60,39 @@ public class TestBisection {
         ArrayList<Iteration> iter = func.bisection();
         int tmp = (int) (iter.get(iter.size()-1).getX()*1000);
         assertTrue(tmp/1000.0==1.000);
+        //assertTrue(iter.get(0).getX()==-8.5);
+    }
+    
+    @Test
+    public void Nuton(){
+        Function func = new Function(1.0, 8.0, -2.0, -7.0);
+        func.setStartPoint(0.0, 1.2);
+        //ArrayList<Iteration> iter = func.bisection();
+        //int tmp = (int) (iter.get(iter.size()-1).getX()*1000);
+        System.out.println(""+func.nuton());
+      //  assertTrue(func.nuton()==1.0);
+        //assertTrue(iter.get(0).getX()==-8.5);
+    }
+    
+     @Test
+    public void Nuton2(){
+        Function func = new Function(1.0, 8.0, -2.0, -7.0);
+        func.setStartPoint(-9.0, -8.0);
+        //ArrayList<Iteration> iter = func.bisection();
+        //int tmp = (int) (func.nuton()*1000);
+        System.out.println(""+func.nuton());
+     //   assertTrue(tmp/1000.0==-8.140);
+        //assertTrue(iter.get(0).getX()==-8.5);
+    }
+    
+     @Test
+    public void Nuton3(){
+        Function func = new Function(1.0, 8.0, -2.0, -7.0);
+        func.setStartPoint(-1.0, 0.0);
+        //ArrayList<Iteration> iter = func.bisection();
+     //   int tmp = (int) (func.nuton()*1000);
+        System.out.println(""+func.nuton());
+      //  assertTrue(tmp/1000.0==-0.859);
         //assertTrue(iter.get(0).getX()==-8.5);
     }
 
