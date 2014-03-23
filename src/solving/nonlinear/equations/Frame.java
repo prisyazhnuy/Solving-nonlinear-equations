@@ -1,15 +1,62 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
+ * To change this license header, choose License Headers in Projec
+    @Override
+    public int getRowCount() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getColumnCount() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getColumnName(int columnIndex) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Class<?> getColumnClass(int columnIndex) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void addTableModelListener(TableModelListener l) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void removeTableModelListener(TableModelListener l) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+t Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
 package solving.nonlinear.equations;
 
+import Jama.Matrix;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -53,6 +100,19 @@ public class Frame extends javax.swing.JFrame {
         jBtnSimpleIter = new javax.swing.JButton();
         jBtnNuton = new javax.swing.JButton();
         jBtnChord = new javax.swing.JButton();
+        jCkBoxTranc = new javax.swing.JCheckBox();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTblSystem = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTblSqrt = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTblZeyd = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,6 +160,8 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
+        jCkBoxTranc.setText("5x-8lnx=8");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -127,17 +189,18 @@ public class Frame extends javax.swing.JFrame {
                         .addGap(27, 27, 27)
                         .addComponent(jLa0)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTFa0, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(jTFa0, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLb0)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTFb0, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTFb0, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBtnInput)
                     .addComponent(jBtnSimpleIter)
                     .addComponent(jBtnNuton)
-                    .addComponent(jBtnChord))
+                    .addComponent(jBtnChord)
+                    .addComponent(jCkBoxTranc))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -160,17 +223,97 @@ public class Frame extends javax.swing.JFrame {
                     .addComponent(jBtnInput))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jBtnSimpleIter)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBtnNuton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBtnChord)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jCkBoxTranc)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         jTabbedPane1.addTab("Численные методы", jPanel1);
+
+        modelSystem = new DefaultTableModel(new Object[]{"X1","X2","X3","F"}, 3);
+        jTblSystem.setModel(modelSystem);
+        jScrollPane2.setViewportView(jTblSystem);
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        modelSqrt= new DefaultTableModel(new Object[]{"X1", "X2", "X3"}, 1);
+        jTblSqrt.setModel(modelSqrt);
+        jScrollPane3.setViewportView(jTblSqrt);
+
+        jLabel1.setText("Метод квадратного корня");
+
+        modelZeydel = new DefaultTableModel(new Object[]{"i","X1","X2","X3"}, 0);
+        jTblZeyd.setModel(modelZeydel);
+        jScrollPane4.setViewportView(jTblZeyd);
+
+        jLabel2.setText("Метод Зейделя");
+
+        modelGauss = new DefaultTableModel(new Object[]{"X1", "X2", "X3"}, 1);
+        jTable1.setModel(modelGauss);
+        jScrollPane5.setViewportView(jTable1);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(4, 4, 4)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(97, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("СЛАУ", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -187,61 +330,155 @@ public class Frame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnInputActionPerformed
+        if(jCkBoxTranc.isSelected()){
+            int k = modelBisection.getRowCount();
+            for(int i=0;i<k;i++){
+                modelBisection.removeRow(0);
+            }
+       // NumberFormat f = NumberFormat.getInstance();
+       // f.setGroupingUsed(false);
+       // Function func;
+        func = new Transcendental();
+        func.setStartPoint(Double.parseDouble(jTFa0.getText()), Double.parseDouble(jTFb0.getText()));
+        double count = 0;
+        for(Iteration iter : StaticFunc.bisection(func)){
+            Vector<Double> vec = new Vector<>();
+            vec.add(count++);
+            vec.add(iter.getA());
+            vec.add(iter.getX());
+            vec.add(iter.getB());
+            vec.add(func.f(iter.getA()));
+            vec.add(func.f(iter.getX()));
+            vec.add(func.f(iter.getB()));
+            modelBisection.addRow(vec);
+        }
+        }else{
         int k = modelBisection.getRowCount();
         for(int i=0;i<k;i++){
             modelBisection.removeRow(0);
         }
-        NumberFormat f = NumberFormat.getInstance();
-        f.setGroupingUsed(false);
+       // NumberFormat f = NumberFormat.getInstance();
+       // f.setGroupingUsed(false);
        // Function func;
         func = new Function(Double.parseDouble(jTFa.getText()), Double.parseDouble(jTFb.getText()), Double.parseDouble(jTFc.getText()), Double.parseDouble(jTFd.getText()));
         func.setStartPoint(Double.parseDouble(jTFa0.getText()), Double.parseDouble(jTFb0.getText()));
         double count = 0;
-        for(Iteration iter : func.bisection()){
-            Vector<String> vec = new Vector<>();
-            vec.add(""+count++);
-            vec.add(f.format(iter.getA()));
-            vec.add(f.format(iter.getX()));
-            vec.add(f.format(iter.getB()));
-            vec.add(f.format(func.f(iter.getA())));
-            vec.add(f.format(func.f(iter.getX())));
-            vec.add(f.format(func.f(iter.getB())));
+        for(Iteration iter : StaticFunc.bisection(func)){
+            Vector<Double> vec = new Vector<>();
+            vec.add(count++);
+            vec.add(iter.getA());
+            vec.add(iter.getX());
+            vec.add(iter.getB());
+            vec.add(func.f(iter.getA()));
+            vec.add(func.f(iter.getX()));
+            vec.add(func.f(iter.getB()));
             modelBisection.addRow(vec);
+        }
         }
     }//GEN-LAST:event_jBtnInputActionPerformed
 
     private void jBtnNutonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnNutonActionPerformed
-        modelBisection = new DefaultTableModel(new Object[]{"n", "xn", "f(xn)","delta(xn)","f(xn)/m1"}, 0);
-        ArrayList<Iteration> nuton = func.nuton();
+        if(jCkBoxTranc.isSelected()){
+            func = new Transcendental();
+        func.setStartPoint(Double.parseDouble(jTFa0.getText()), Double.parseDouble(jTFb0.getText()));
+            modelBisection = new DefaultTableModel(new Object[]{"n", "xn", "f(xn)","delta(xn)","f(xn)/m1"}, 0);
+        ArrayList<Iteration> nuton = StaticFunc.nuton(func);
         int n=0;
         for(Iteration iter : nuton){
             modelBisection.addRow(new Object[]{n, iter.getX(), func.f(iter.getX()), iter.getB(), iter.getA()});
             n++;
         }
         jTblBisection.setModel(modelBisection);
+        }else{
+        modelBisection = new DefaultTableModel(new Object[]{"n", "xn", "f(xn)","delta(xn)","f(xn)/m1"}, 0);
+        ArrayList<Iteration> nuton = StaticFunc.nuton(func);
+        int n=0;
+        for(Iteration iter : nuton){
+            modelBisection.addRow(new Object[]{n, iter.getX(), func.f(iter.getX()), iter.getB(), iter.getA()});
+            n++;
+        }
+        jTblBisection.setModel(modelBisection);
+        }
     }//GEN-LAST:event_jBtnNutonActionPerformed
 
     private void jBtnChordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnChordActionPerformed
-        modelBisection = new DefaultTableModel(new Object[]{"n", "xn", "f(xn)","delta(xn)","f(xn)/m1"}, 0);
-        ArrayList<Iteration> chord = func.chord();
+        if(jCkBoxTranc.isSelected()){
+            func = new Transcendental();
+        func.setStartPoint(Double.parseDouble(jTFa0.getText()), Double.parseDouble(jTFb0.getText()));
+             modelBisection = new DefaultTableModel(new Object[]{"n", "xn", "f(xn)","delta(xn)","f(xn)/m1"}, 0);
+        ArrayList<Iteration> chord = StaticFunc.chord(func);
         int n=0;
         for(Iteration iter : chord){
             modelBisection.addRow(new Object[]{n, iter.getX(), func.f(iter.getX()), iter.getB(), iter.getA()});
             n++;
         }
         jTblBisection.setModel(modelBisection);
+        }else{
+        modelBisection = new DefaultTableModel(new Object[]{"n", "xn", "f(xn)","delta(xn)","f(xn)/m1"}, 0);
+        ArrayList<Iteration> chord = StaticFunc.chord(func);
+        int n=0;
+        for(Iteration iter : chord){
+            modelBisection.addRow(new Object[]{n, iter.getX(), func.f(iter.getX()), iter.getB(), iter.getA()});
+            n++;
+        }
+        jTblBisection.setModel(modelBisection);
+        }
     }//GEN-LAST:event_jBtnChordActionPerformed
 
     private void jBtnSimpleIterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSimpleIterActionPerformed
+       if(jCkBoxTranc.isSelected()){
+           func = new Transcendental();
+           func.setStartPoint(Double.parseDouble(jTFa0.getText()), Double.parseDouble(jTFb0.getText()));
         modelBisection = new DefaultTableModel(new Object[]{"n", "xn", "f(xn)","f(xn)/m1"}, 0);
-        ArrayList<Iteration> chord = func.simpleIteration();
+        ArrayList<Iteration> chord = StaticFunc.simpleIteration(func);
         int n=0;
         for(Iteration iter : chord){
             modelBisection.addRow(new Object[]{n, iter.getX(), func.f(iter.getX()), iter.getA()});
             n++;
         }
         jTblBisection.setModel(modelBisection);
+       }else{
+        modelBisection = new DefaultTableModel(new Object[]{"n", "xn", "f(xn)","f(xn)/m1"}, 0);
+        ArrayList<Iteration> chord = StaticFunc.simpleIteration(func);
+        int n=0;
+        for(Iteration iter : chord){
+            modelBisection.addRow(new Object[]{n, iter.getX(), func.f(iter.getX()), iter.getA()});
+            n++;
+        }
+        jTblBisection.setModel(modelBisection);
+       }
     }//GEN-LAST:event_jBtnSimpleIterActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        TableModel model = jTblSystem.getModel();
+        double[][] matr = new double[model.getRowCount()][model.getColumnCount()];
+        double[][] matrZ = new double[model.getRowCount()][model.getRowCount()];
+        double[][] F = new double[1][3];
+        for(int i=0; i<model.getRowCount(); i++){
+            for(int j=0; j<model.getColumnCount(); j++){
+                matr[i][j]=Double.parseDouble((String) model.getValueAt(i, j));
+                if(j<model.getColumnCount()-1){
+                    matrZ[i][j]=Double.parseDouble((String) model.getValueAt(i, j));
+                }else{
+                    F[0][i]=Double.parseDouble((String) model.getValueAt(i, j));
+                }
+            }
+        }
+        double[] res = StaticFunc.SquareSqrt(new Matrix(matr));
+        for(int i=0; i<3; i++){
+            modelSqrt.setValueAt(res[i], 0, i);
+        }
+        ArrayList<Matrix> zeyd = StaticFunc.zeydel(new Matrix(matrZ), new Matrix(F));
+        int i=0;
+        for(Matrix m : zeyd){
+            modelZeydel.addRow(new Object[]{i, m.get(0, 0),m.get(0, 1),m.get(0, 2)});
+            i++;
+        }
+        double[] resG = StaticFunc.gauss(matrZ, F[0]);
+        for(i=0; i<3; i++){
+            modelGauss.setValueAt(resG[i], 0, i);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
  
     public static void start() {
@@ -281,14 +518,23 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JButton jBtnInput;
     private javax.swing.JButton jBtnNuton;
     private javax.swing.JButton jBtnSimpleIter;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBox jCkBoxTranc;
     private javax.swing.JLabel jLa;
     private javax.swing.JLabel jLa0;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLb;
     private javax.swing.JLabel jLb0;
     private javax.swing.JLabel jLc;
     private javax.swing.JLabel jLres;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTextField jTFa;
     private javax.swing.JTextField jTFa0;
     private javax.swing.JTextField jTFb;
@@ -296,8 +542,16 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JTextField jTFc;
     private javax.swing.JTextField jTFd;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTblBisection;
+    private javax.swing.JTable jTblSqrt;
+    private javax.swing.JTable jTblSystem;
+    private javax.swing.JTable jTblZeyd;
     // End of variables declaration//GEN-END:variables
     private DefaultTableModel modelBisection;
-    Function func;
+    private DefaultTableModel modelSystem;
+    private TableModel modelSqrt;
+    private DefaultTableModel modelZeydel;
+    private TableModel modelGauss;
+    IFunction func;
 }
